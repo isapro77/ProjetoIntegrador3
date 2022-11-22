@@ -1,0 +1,269 @@
+<!--
+  1. Criar regra de preenchimento obrigatorio
+  2. Criar seta para voltar site ao topo
+  3. 
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!--====== Required meta tags ======-->
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!--====== Title ======-->
+  <title>Vagas</title>
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg" />
+
+  <!--====== Bootstrap css ======-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!--====== Line Icons css ======-->
+  <link rel="stylesheet" href="assets/css/lineicons.css" />
+
+  <!--====== Tiny Slider css ======-->
+  <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+
+  <!--====== gLightBox css ======-->
+  <link rel="stylesheet" href="assets/css/glightbox.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!--====== NAVBAR NINE PART START ======-->
+
+  <section class="navbar-area navbar-nine">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+              <img src="assets/images/white-logo.svg" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
+              aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="page-scroll active" href="#hero-area">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#services">Cadastro</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- navbar -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </section>
+
+  <!--====== NAVBAR NINE PART ENDS ======-->
+
+  
+
+  <!--====== SIDEBAR PART ENDS ======-->
+
+  <!-- Start header Area -->
+  <section id="hero-area" class="header-area header-eight">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-content">
+            <h1>Sistema Vagas.</h1>
+            <p>
+              Sistema de cadastro e aviso de vagas temporarias para pessoas em situação de rua.
+            </p>            
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-image">
+            <img src="assets/images/header/hero-image.jpg" alt="#" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header Area -->
+
+  <!-- ===== service-area start ===== -->
+  <section id="services" class="services-area services-eight">
+    <!--======  Start Section Title Five ======-->
+    <div class="section-title-five">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h6>Cadastro</h6>
+              <h2 class="fw-bold">Realizar Cadastro de Vagas</h2>
+            </div>
+            <!--====== Começar aqui o cadastro ======-->
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!--======  End Section Title Five ======-->
+    <!--======  Cadastro Abrigo ======-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="single-services">
+            <div class="service-icon">
+             <!-- <i class="lni lni-capsule"></i> -->
+             <i class="lni lni-apartment"></i>
+              <!--Documento de referencia https://lineicons.com/icons/-->
+            </div>
+            <div class="service-content">
+              <h4>Cadastro Abrigo</h4>
+              <!--======  inserir aqui os inputs ======-->
+              
+              <label>Nome abrigo</label>
+              <input type="text" class="form-control" name="nomAbrigo" placeholder="Nome">
+              <label>Enderço abrigo</label>
+              <input type="text" class="form-control" name="endAbrigo" placeholder="Endereço">
+              <label>Vagas disponiveis</label>
+              <input type="text" class="form-control" name="qtdVagas" placeholder="Vagas disponiveis">
+              <label>Aceita animais de estimação (PET)</label>
+              <form class="form-control">
+                <input type="radio" id="petSim" name="aceitaPet" value="petSim">
+                <label for="petSim"> Sim</label><br>
+                <input type="radio" id="petNao" name="aceitaPet" value="petNao">
+                <label for="petNao"> Não</label><br>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-users"></i>
+            </div>
+            <div class="service-content">
+              <h4>Cadastro Pessoas</h4>
+              <!--======  inserir aqui os inputs ======-->
+              <label>Nome Pessoa</label>
+              <input type="text" class="form-control" name="nomAbrigo" placeholder="Nome">
+
+              <label>Sexo</label>
+              <form class="form-control">
+                <input type="radio" id="sexMasc" name="sexo" value="Masculino">
+                <label for="sexoMasculino"> Masculino</label><br>
+                <input type="radio" id="sexFem" name="sexo" value="Feminino">
+                <label for="sexoFeminino"> Feminino</label><br>
+                <input type="radio" id="sexIndef" name="sexo" value="NaoDefinido">
+                <label for="sexoNaoDefinido"> Não Definido</label>
+              </form>
+              <label>Data Nascimento</label>
+              <input type="date" class="form-control" name="dataNasc" placeholder="Data Nascimento">
+              <label>Tem animal de estimação(PET)</label>
+              <form class="form-control">
+                <input type="radio" id="temPetSim" name="temPeT" value="temPetSim">
+                <label for="petSim"> Sim</label><br>
+                <input type="radio" id="temPetNao" name="temPeT" value="temPetNao">
+                <label for="petNao"> Não</label><br>
+              </form>
+              <form>
+                <label for="abrigo">Qual Abrigo </label><br> <input name="abrigo" id="abrigo" list="abrigos" class="form-control">
+              </form>
+              <datalist id="abrigos">
+                <option>Abrigo 1</option>
+                <option>Abrigo 2</option>
+                <option>Abrigo 3</option>
+                <option>Abrigo 4</option>
+                <option>Abrigo 5</option>
+                <option>Abrigo 6</option>
+                <option>Abrigo 7</option>
+                <option>Abrigo 8</option>
+                <option>Abrigo 9</option>
+              </datalist>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== service-area end ===== -->
+
+
+<!-- ========================= contact-section start ========================= -->
+<section id="contact" class="contact-section">
+  <div class="section-title-five">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content">
+            <h6>Contato</h6>
+            <h2 class="fw-bold">Contato em caso de ajuda.</h2>
+          </div>
+          <!--====== Começar aqui o cadastro ======-->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-12 col-12">
+        <div class="contact-item-wrapper">
+          
+          <div class="row align-items-center">
+            <div class="col-12 col-md-6 col-xl-12">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="lni lni-phone"></i>
+                </div>
+                <div class="contact-content">
+                  <h4>Contato</h4>
+                  <p>0984537278623</p>
+                  <p>yourmail@gmail.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-12">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="lni lni-map-marker"></i>
+                </div>
+                <div class="contact-content">
+                  <h4>Endereço</h4>
+                  <p>Av. Marechal Rondon, 263 -<p>
+                  <p> Centro, Osasco - SP, 06093-020</p>
+                  <p>SP-Brasil</p>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========================= contact-section end ========================= -->
+
+
+
+
+</body>
+</html>
