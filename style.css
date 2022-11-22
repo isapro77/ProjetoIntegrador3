@@ -1905,3 +1905,17 @@ p {
   color: var(--white);
   background-color: var(--primary-dark);
 }
+
+
+/* Novas formataçoes isael
+ */
+
+button{
+  margin: 2%;
+}
+
+#dashboard{
+  background-color: white;
+  margin: 2%;
+  border-radius: 10px;
+}
