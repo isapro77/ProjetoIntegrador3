@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block title %}Detalhe Dispositivo{% endblock title %}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ device.código }}</h2>
+        <p>Endereço: {{ device.endereço_dispositivo }}</p>
+        <!--<p>Número: {{ device.número }}</p>-->
+        <p>CEP: {{ device.CEP }}</p>
+        <p>Bairro: {{ device.bairro }}</p>
+        <p>Cidade: {{ device.cidade }}</p>
+    </div>
+    <a href="{% url 'device_edit' device.pk %}">Editar Dispositivo</a>
+    <a href="{% url 'device_delete' device.pk %}">Excluir Dispositivo</a>
+{% endblock content %}

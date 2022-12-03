@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+
+{% block title %}Dispositivos{% endblock title %}
+
+{% block content %}
+<h2>Dispositivos</h2><p><a href="{% url 'device_new' %}">Cadastrar</a></p><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Código</th>
+      <th scope="col">Endereço</th>
+      <!--<th scope="col">Número</th>-->
+      <th scope="col">CEP</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for device in device_list %}
+    <tr>
+        <th scope="row">{{ device.id }}</th>
+        <td>{{ device.código }}</td>
+        <td>{{ device.endereço_dispositivo }}</td>
+        <!--<td>{{ device.número }}</td>-->
+        <td>{{ device.CEP }}</td>
+        <td>{{ device.bairro }}</td>
+        <td>{{ device.cidade }}</td>
+        <td><a href="{% url 'device_edit' device.pk %}">Editar</a> | <a href="{% url 'device_delete' device.pk %}">Excluir</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

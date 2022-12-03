@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block title %}Detalhe Abrigado{% endblock title %}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ sheltered.nome }}</h2>
+        <p>Gênero: {{ sheltered.gênero }}</p>
+        <p>Idade: {{ sheltered.idade }}</p>
+        <p>Etinia: {{ sheltered.etinia }}</p>
+        <p>Abrigo: {{ sheltered.abrigo }}</p>
+    </div>
+    <a href="{% url 'sheltered_edit' sheltered.pk %}">Editar Abrigado</a>
+    <a href="{% url 'sheltered_delete' sheltered.pk %}">Excluir Abrigado</a>
+{% endblock content %}
