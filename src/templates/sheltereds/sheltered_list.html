@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% block title %}Abrigados{% endblock title %}
+
+{% block content %}
+<h2>Abrigados</h2><p><a href="{% url 'sheltered_new' %}">Cadastrar</a></p><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Gênero</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Etinia</th>
+      <th scope="col">Abrigo</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for sheltered in sheltered_list %}
+    <tr>
+        <th scope="row">{{ sheltered.id }}</th>
+        <td>{{ sheltered.nome }}</td>
+        <td>{{ sheltered.gênero }}</td>
+        <td>{{ sheltered.idade }}</td>
+        <td>{{ sheltered.etinia }}</td>
+        <td>{{ sheltered.abrigo }}</td>
+        <td><a href="{% url 'sheltered_edit' sheltered.pk %}">Editar</a> | <a href="{% url 'sheltered_delete' sheltered.pk %}">Excluir</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

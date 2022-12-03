@@ -1,0 +1,43 @@
+{% extends "_base.html" %}
+
+{% block title %}Abrigos{% endblock title %}
+
+{% block content %}
+<h2>Abrigos</h2><p><a href="{% url 'shelter_new' %}">Cadastrar</a></p><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Endereço</th>
+      <!--<th scope="col">Número</th>-->
+      <th scope="col">CEP</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Pet</th>
+      <th scope="col">Total</th>
+      <th scope="col">Vagas</th>
+      <th scope="col">Vacância</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for shelter in shelter_list %}
+    <tr>
+        <th scope="row">{{ shelter.id }}</th>
+        <td>{{ shelter.nome }}</td>
+        <td>{{ shelter.endereço }}</td>
+        <!--<td>{{ shelter.número }}</td>-->
+        <td>{{ shelter.CEP }}</td>
+        <td>{{ shelter.bairro }}</td>
+        <td>{{ shelter.cidade }}</td>
+        <td>{{ shelter.pet }}</td>
+        <td>{{ shelter.total }}</td>
+        <td>{{ shelter.vagas }}</td>
+        <td>{{ shelter.vacância }}%</td>
+        <td><a href="{% url 'shelter_edit' shelter.pk %}">Editar</a> | <a href="{% url 'shelter_delete' shelter.pk %}">Excluir</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

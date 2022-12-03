@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+
+{% block title %}Detalhe Distância Dispositivo{% endblock title %}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ shelter.distância }}</h2>
+        <p>Abrigo: {{ shelterdevice.abrigo }}</p>
+        <p>Dispositivo: {{ shelterdevice.dispositivo }}</p>
+    </div>
+    <a href="{% url 'shelter_device_edit' shelterdevice.pk %}">Editar Distância</a>
+    <a href="{% url 'shelter_device_delete' shelterdevice.pk %}">Excluir Distância</a>
+{% endblock content %}

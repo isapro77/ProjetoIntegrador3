@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+
+{% block title %}Detalhe Abrigo{% endblock title %}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ shelter.nome }}</h2>
+        <p>Endereço: {{ shelter.endereço }}</p>
+        <!--<p>Número: {{ shelter.número }}</p>-->
+        <p>CEP: {{ shelter.CEP }}</p>
+        <p>Bairro: {{ shelter.bairro }}</p>
+        <p>Cidade: {{ shelter.cidade }}</p>
+        <p>Pet: {{ shelter.pet }}</p>
+        <p>Total: {{ shelter.total }}</p>
+        <p>Vagas: {{ shelter.vagas }}</p>
+        <p>Vagas: {{ shelter.vacância }}</p>
+    </div>
+    <a href="{% url 'shelter_edit' shelter.pk %}">Editar Abrigo</a>
+    <a href="{% url 'shelter_delete' shelter.pk %}">Excluir Abrigo</a>
+{% endblock content %}

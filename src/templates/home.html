@@ -1,0 +1,23 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Abrigo</th>
+      <th scope="col">Vacãncia</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for shelter in shelter_list %}
+    <tr>
+        <td>{{ shelter.nome }}</td>
+        <td>{{ shelter.vacância }}%</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
