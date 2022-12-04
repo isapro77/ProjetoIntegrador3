@@ -1,0 +1,135 @@
+
+/*********
+Projeto Integrador 3
+UNIVESP - Universidade Virtual de São Paulo 
+*********/
+
+#include <LiquidCrystal_I2C.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
+#include "DHT.h"
+#define DHTPIN 4
+#define DHTTYPE DHT11
+#define BUTTON_PIN 19
+
+DHT dht(DHTPIN, DHTTYPE);
+
+int lcdColumns = 16;
+int lcdRows = 2;
+const char* ssid = "Nome da rede";
+const char* password = "Senha da rede";
+String nome, endereco, pet;
+bool invalido = true; // armazenará se a requisição de cotação é inválida
+int buttonState = 0;
+String url = "https://proj-int-iii-univesp.herokuapp.com/shelters/api/1/?format=json"; 
+
+unsigned long timerRequisicao; const int periodoRequisicao = 30000; // de requisição HTTP
+
+
+LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);  
+
+void setup(){
+
+  Serial.begin(115200);
+  Serial.println();
+  delay(1000);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  dht.begin();
+  lcd.init();                    
+  lcd.backlight();
+
+  WiFi.disconnect(); // Desconecta do WiFI se já houver alguma conexão
+  WiFi.mode(WIFI_STA);
+  Serial.println("[SETUP] Tentando conexão com o WiFi...");
+  WiFi.begin(ssid, password); // Conecta-se à rede
+  if (WiFi.waitForConnectResult() == WL_CONNECTED)          
+  {
+    Serial.println("[SETUP] WiFi iniciado com sucesso!");
+  } else
+  {
+    Serial.println("[SETUP] Houve falha na inicialização do WiFi. Reiniciando ESP.");
+    ESP.restart();
+  }
+}
+void loop(){
+
+
+  float t = dht.readTemperature();
+
+  if (isnan(t)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+
+  float hic = dht.computeHeatIndex(t, false);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Temperatura:");
+  lcd.setCursor(6, 1);
+  lcd.print(t);  
+  lcd.print("C");
+  delay(2000);
+
+//  lcd.clear();
+//  lcd.setCursor(0, 0);
+//  lcd.print("Segure o botao");
+//  lcd.setCursor(0, 1);
+//  lcd.print("para solicitar ajuda");  
+//  delay(1000);
+
+//  buttonState = digitalRead(BUTTON_PIN);
+//  Serial.print(buttonState);
+//  if(buttonState == 0){
+//  Serial.print(buttonState);
+//  lcd.clear();
+// lcd.setCursor(0, 0);
+//  lcd.print("Ajuda solicitada");
+//  lcd.setCursor(0, 1);  
+//  lcd.print("Aguarde...");
+// delay(2000);
+//    }
+
+  
+  // Faz a requisição e atualiza os dados
+  if (millis() - timerRequisicao >= periodoRequisicao || timerRequisicao == 0) {
+    HTTPClient http; // Cria o objeto da classe HTTPClient
+    Serial.println("[HTTP] begin...");
+    http.begin(url); // se conecta com o servidor através da UR fornecida
+    Serial.println("[HTTP] GET...");
+    int httpCode = http.GET(); // envia uma solicitação GET e obtém o código de resposta
+    if (httpCode == 200) // se o código de resposta for igual à 200 (OK), ...
+    {
+      invalido = false; // armazena que a requisição de cotação não é inválida
+      DynamicJsonDocument doc(2048); // Bytes necessários para armazenar os objetos
+      //                      e matrizes JSON na memória. 2048 Bytes com base no
+      //                      cálculo em http://arduinojson.org/v6/assistant.
+      // Analisa o objeto JSON
+      DeserializationError error = deserializeJson(doc, http.getString());
+      if (error) // se houve erros na análise do JSON, ...
+      {
+        Serial.print("deserializeJson() falhou: ");
+        Serial.println(error.f_str());
+        invalido = true; // armazena que a requisição de cotação é inválida
+      } else  // se não houve erros na análise do JSON, ...
+      {
+        // Extrai os valores do tempo e repassa para as variáveis globais
+        nome = String((const char*)doc["abrigo"]);
+        endereco = String((const char*)doc["endereco"]).c_str();
+        pet = String((const char*)doc["pet"]).c_str();
+      }
+    } else {
+      invalido = true; // armazena que a requisição de cotação é inválida
+    }
+    http.end();  // finaiza a conexão HTTP
+    Serial.println("[HTTP] GET END!\n");
+    timerRequisicao = millis();
+  } 
+  lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print(nome);
+ lcd.setCursor(0,1);
+ lcd.print(endereco);
+ delay(1000);
+}
